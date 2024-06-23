@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  src:
+    # build:
+    #   dockerfile: dockerfile
+    image: lavy
+    volumes:
+      - /media/bombom21/CC0C3E5B0C3E412E2/LLM/4Kfinetune/vi-OCR_VQA:/src/data
+      - /home/bombom21/CODE/LaVy/checkpoints:/src/checkpoints
+      - /home/bombom21/CODE/LaVy/LaVy:/src/code
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: all
+            capabilities:
+              - gpu
+              # - utility # nvidia-smi
+              # - compute # CUDA
